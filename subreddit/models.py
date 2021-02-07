@@ -3,22 +3,31 @@ from django.contrib.auth.models import User
 
 
 class Subreddit(models.Model):
-    name = models.CharField(max_length=25)
-    user_id = models.ManyToManyField(User)
+    name = models.CharField(max_length=25, unique=True)
+    user = models.ManyToManyField(User)
+
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=120)
     body = models.TextField()
     upvotes = models.IntegerField()
     downvotes = models.IntegerField()
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    subreddit_id = models.ForeignKey(Subreddit, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    subreddit = models.ForeignKey(Subreddit, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"title:{self.title}, body:{self.body}, upvotes:{self.upvotes}, downvotes:{self.downvotes}, user={self.user}, subreddit:{self.subreddit}"
 
 class Comment(models.Model):
     comment_text = models.TextField()
     upvotes = models.IntegerField()
     downvotes = models.IntegerField()
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"title:{self.comment_text}, upvotes:{self.upvotes}, downvotes:{self.downvotes}, user={self.user}, post:{self.post}"
     
     
