@@ -15,3 +15,10 @@ def index(request):
             top_posts.append(posts[0])
     context = {'posts': top_posts}
     return render(request, 'subreddit/index.html', context)
+
+def all(request, subreddit):
+    sr = Subreddit.objects.get(name=subreddit)
+    posts = Post.objects.filter(subreddit=sr).order_by('-posted_at')
+    context = {'posts': posts, 'subreddit': subreddit}
+    return render(request, 'subreddit/subreddit.html', context)
+
