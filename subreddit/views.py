@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Max
 
 from .models import Subreddit, Post, Comment
@@ -17,7 +17,7 @@ def index(request):
     return render(request, 'subreddit/index.html', context)
 
 def subreddit(request, subreddit):
-    sr = Subreddit.objects.get(name=subreddit)
+    sr = get_object_or_404(Subreddit, name=subreddit)
     posts = Post.objects.filter(subreddit=sr).order_by('-posted_at')
     context = {'posts': posts, 'subreddit': subreddit}
     return render(request, 'subreddit/subreddit.html', context)
