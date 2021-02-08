@@ -7,9 +7,6 @@ class Subreddit(models.Model):
     user = models.ManyToManyField(User)
     creation_date = models.DateTimeField()
 
-    def posts(self):
-        return Post.objects.filter(subreddit=self.name)
-
     def __str__(self):
         return self.name
 

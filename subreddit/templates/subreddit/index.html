@@ -12,6 +12,7 @@
                     <p>{{ post.body }}</p>
                     <span>upvotes:{{ post.upvotes }}</span>
                     <span>upvotes:{{ post.downvotes }}</span>
+                    <span>comments: {{ post.comment_set.all|length }}</span>
                 </li>
             {% endfor %}
         </ul>
