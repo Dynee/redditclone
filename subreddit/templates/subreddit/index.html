@@ -4,10 +4,16 @@
         <title>Front Page</title>
     </head>
     <body>
-        This page will display top posts from each subreddit.
-
-        Posts
-
-        {{ posts }}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <p>r/{{ post.subreddit }}</p> <span>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.body }}</p>
+                    <span>upvotes:{{ post.upvotes }}</span>
+                    <span>upvotes:{{ post.downvotes }}</span>
+                </li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
