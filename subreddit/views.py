@@ -22,3 +22,9 @@ def subreddit(request, subreddit):
     context = {'posts': posts, 'subreddit': subreddit}
     return render(request, 'subreddit/subreddit.html', context)
 
+def search(request, query):
+    """
+    Return a view with search results relating to a query
+    """
+
+
