@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Front Page</title>
-    </head>
-    <body>
-        <ul>
-            {% for post in posts %}
-                <li>
-                    <p>r/{{ post.subreddit }}</p> <span>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
-                    <h1><a href="{% url 'subreddit' post.subreddit %}">{{ post.title }}</a></h1>
-                    <p>{{ post.body }}</p>
-                    <span>upvotes:{{ post.upvotes }}</span>
-                    <span>upvotes:{{ post.downvotes }}</span>
-                    <span>comments: {{ post.comment_set.all|length }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% include "./_head.html" %}
+<ul>
+    {% for post in posts %}
+        <li>
+            <p>r/{{ post.subreddit }}</p> <span>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
+            <h1><a href="{% url 'subreddit' post.subreddit %}">{{ post.title }}</a></h1>
+            <p>{{ post.body }}</p>
+            <span>upvotes:{{ post.upvotes }}</span>
+            <span>upvotes:{{ post.downvotes }}</span>
+            <span>comments: {{ post.comment_set.all|length }}</span>
+        </li>
+    {% endfor %}
+</ul>
+{% include "./_footer.html" %}
