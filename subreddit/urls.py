@@ -1,7 +1,7 @@
 from django.urls import path
 
-from . import views
+from .views import SubredditView
 
 urlpatterns = [
-    path('<slug:subreddit>/', views.subreddit, name='subreddit'),
+    path('<slug:subreddit>/', SubredditView.as_view(), name='subreddit'),
 ]

@@ -1,0 +1,14 @@
+{% include "./_head.html" %}
+<h1>Search Results</h1>
+<ul>
+{% for post in object_list %}
+    <li>
+        <p>{{ post.title }}</p>
+        <p>r/{{ post.subreddit.name }}</p>
+        <p>comments {{ post.comment_set|length }}</p>
+        <span>upvotes {{ post.upvotes }}</span>
+    </li>
+
+{% endfor %}
+</ul>
+{% include "./_footer.html" %}

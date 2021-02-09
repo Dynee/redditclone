@@ -7,7 +7,8 @@
         <ul>
             <li><a href="/">Home</a></li>
         </ul>
-        <form>
-            <input type="text" name="search" placeholder="Search subreddits">
+        <form action="{% url 'search' %}" method="GET">
+            {% csrf_token %}
+            <input type="text" value="" name="query" placeholder="Search Subreddits">
             <button type="submit">Search</button>
         </form>

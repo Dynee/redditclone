@@ -1,7 +1,6 @@
 {% include "./_head.html" %}
-<h1>r/{{ subreddit }}</h1>
 <ul>
-    {% for post in posts %}
+    {% for post in object_list %}
         <li>
             <p>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
             <h1>{{ post.title }}</h1>

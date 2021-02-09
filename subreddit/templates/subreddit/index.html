@@ -1,9 +1,9 @@
 {% include "./_head.html" %}
 <ul>
-    {% for post in posts %}
+    {% for post in object_list %}
         <li>
-            <p>r/{{ post.subreddit }}</p> <span>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
-            <h1><a href="{% url 'subreddit' post.subreddit %}">{{ post.title }}</a></h1>
+            <p><a href="{% url 'subreddit' post.subreddit %}">r/{{ post.subreddit }}</a></p> <span>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
+            <h1>{{ post.title }}</h1>
             <p>{{ post.body }}</p>
             <span>upvotes:{{ post.upvotes }}</span>
             <span>upvotes:{{ post.downvotes }}</span>
