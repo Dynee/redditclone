@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import Subreddit, Post, Comment
 
@@ -24,4 +24,9 @@ class SearchResultsView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('query')
         return Post.objects.filter(title__icontains=query)
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'subreddit/post_detail.html'
+    
 
