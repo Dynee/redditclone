@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views import SubredditView, PostDetailView
+from .views import PostDetailView, SubredditView
 
 urlpatterns = [
-    path('<slug:subreddit>/', SubredditView.as_view(), name='subreddit'),
-    path('<slug:subreddit>/p/<int:id>', PostDetailView.as_view(), name='post')
+    path('', SubredditView.as_view(), name='subreddit'),
+    path('p/<int:pk>', PostDetailView.as_view(), name='post')
 ]

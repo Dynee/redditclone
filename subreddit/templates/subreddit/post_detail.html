@@ -4,4 +4,15 @@
 <span>posted at {{ post.posted_at }}</span>
 <span>upvotes {{ post.upvotes }}</span>
 <span>downvotes {{ post.downvotes }}</span>
+<ul>
+    {% for comment in post.comment_set.all %}
+        <li>
+            <h3>{{ comment.user }}</h3>
+            <p>{{ comment.comment_text }}</p>
+            <span>posted at {{ comment.commented_at }} </span>
+            <span>upvotes: {{ comment.upvotes }}</span>
+            <span>downvotes: {{ comment.downvotes }}</span>
+        </li>
+    {% endfor %}    
+</ul>
 {% include "./_footer.html" %}

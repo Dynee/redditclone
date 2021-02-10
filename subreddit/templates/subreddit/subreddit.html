@@ -3,7 +3,7 @@
     {% for post in object_list %}
         <li>
             <p>posted by u/{{ post.user }} at {{ post.posted_at }}</span>
-            <h1><a href="{% url 'post' %}">{{ post.title }}</a></h1>
+            <h1><a href="{% url 'post' post.subreddit.name post.id %}">{{ post.title }}</a></h1>
             <p>{{ post.body }}</p>
             <span>upvotes:{{ post.upvotes }}</span>
             <span>upvotes:{{ post.downvotes }}</span>

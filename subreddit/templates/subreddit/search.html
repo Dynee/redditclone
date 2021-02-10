@@ -3,9 +3,9 @@
 <ul>
 {% for post in object_list %}
     <li>
-        <p>{{ post.title }}</p>
-        <p>r/{{ post.subreddit.name }}</p>
-        <p>comments {{ post.comment_set|length }}</p>
+        <p><a href="{% url 'post' post.subreddit.name post.id %}">{{ post.title }}</a></p>
+        <p><a href="{% url 'subreddit' post.subreddit.name %}">r/{{ post.subreddit.name }}</a></p>
+        <p>comments {{ post.comment_set.all|length }}</p>
         <span>upvotes {{ post.upvotes }}</span>
     </li>
 

@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from subreddit.views import IndexPageView, SearchResultsView
+from subreddit.views import IndexPageView, SearchResultsView, SubredditView
 
 urlpatterns = [
     path('', IndexPageView.as_view(), name='index'),
-    path('r/', include('subreddit.urls')),
+    path('r/<slug:subreddit>/', include('subreddit.urls')),
     path('search/', SearchResultsView.as_view(), name='search'),
     path('admin/', admin.site.urls),
 ]
